@@ -31,7 +31,7 @@
     },
   
     "Resources" : {
-      "WebServerInstance": {  
+      "myServerInstance": {  
         "Type": "AWS::EC2::Instance",
         "Metadata" : {
           "AWS::CloudFormation::Init" : {
@@ -83,14 +83,14 @@
                "# Install the files and packages from the metadata\n",
                "/opt/aws/bin/cfn-init -v ",
                "         --stack ", { "Ref" : "AWS::StackName" },
-               "         --resource WebServerInstance ",
+               "         --resource myServerInstance ",
                "         --configsets All ",
                "         --region ", { "Ref" : "AWS::Region" }, "\n",
   
                "# Signal the status from cfn-init\n",
                "/opt/aws/bin/cfn-signal -e $? ",
                "         --stack ", { "Ref" : "AWS::StackName" },
-               "         --resource WebServerInstance ",
+               "         --resource myServerInstance ",
                "         --region ", { "Ref" : "AWS::Region" }, "\n"
           ]]}}        
         },
@@ -105,7 +105,7 @@
     "Outputs" : {
       "URL" : {
         "Description" : "URL of the sample website",
-        "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "WebServerInstance", "PublicDnsName" ]}]]}
+        "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "myServerInstance", "PublicDnsName" ]}]]}
       }
     }
   }
