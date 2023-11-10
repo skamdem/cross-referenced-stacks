@@ -17,7 +17,7 @@ Mappings:
   RegionMap:
     us-east-1:
       PV64: ami-8ff710e2
-      HVM64: ami-05f2b469e504202f7 # ami-f5f41398
+      HVM64: ami-f5f41398 # ami-05f2b469e504202f7 
       HVMG2: ami-4afd1d27
     us-west-2:
       PV64: ami-eff1028f
@@ -92,7 +92,7 @@ Resources:
                 enabled: 'true'
                 ensureRunning: 'true'
     Properties:
-      InstanceType: t3.nano # t2.micro
+      InstanceType: t2.micro # t3.nano
       ImageId:
         'Fn::FindInMap':
           - RegionMap
